@@ -1,70 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Seif — WordPress Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="./craftpress-icon.png" />
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #0a0a0a;
-      --muted: #6b6b6b;
-      --card: #fff;
-      --glass: rgba(10,10,10,0.04);
-      --radius: 14px;
-      --maxw: 1150px;
+      --bg:#ffffff;--text:#0a0a0a;--muted:#6b6b6b;--card:#fff;--glass:rgba(10,10,10,0.04);
+      --radius:14px;--maxw:1150px;font-family:'Manrope',system-ui;
       --soft-shadow: 0 12px 36px rgba(10,10,10,0.04);
       --accent-shadow: 0 30px 70px rgba(10,10,10,0.06);
-
-      /* Accent color (single color scheme) - currently muted blue.
-         To change color, update this value only. */
-      --accent: #2B8CFF; /* muted professional blue */
-      --accent-alpha: rgba(43,140,255,0.08);
-      font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      --accent: #2B8CFF; --accent-alpha: rgba(43,140,255,0.08);
     }
-
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: linear-gradient(180deg,#ffffff 0%, #fbfbfb 100%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-    }
+    body{margin:0;background:linear-gradient(180deg,#ffffff 0%, #fbfbfb 100%);color:var(--text);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--maxw);margin:48px auto;padding:32px}
 
-    .wrap{max-width:var(--maxw);margin:48px auto;padding:36px}
+    /* top language switch placed to the right */
+    .top-row{display:flex;justify-content:flex-end;gap:12px;margin-bottom:8px}
+    .lang-btn{background:transparent;border:0;font-weight:800;cursor:pointer;font-size:15px;padding:6px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:8px}
+    .lang-btn:hover{background:var(--accent-alpha)}
 
     /* HERO */
-    .hero{
-      display:flex;
-      gap:28px;
-      align-items:center;
-      justify-content:space-between;
-      padding:28px;
-      border-radius:16px;
-      background: linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.00));
-      box-shadow: var(--soft-shadow);
-    }
+    .hero{display:flex;gap:28px;align-items:center;justify-content:space-between;padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.00));box-shadow:var(--soft-shadow)}
     h1{font-size:54px;margin:0;font-weight:800;letter-spacing:0.2px;line-height:1.02}
     .entity{color:var(--muted);font-weight:700;margin-top:8px}
     p.lead{margin-top:14px;color:var(--muted);font-size:18px;max-width:760px;line-height:1.6}
 
     /* Controls */
     .controls{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-    .btn{
-      padding:11px 18px;border-radius:999px;font-weight:700;border:1px solid rgba(15,15,15,0.06);
-      text-decoration:none;color:var(--text);background:#fff;box-shadow:0 8px 22px rgba(0,0,0,0.03);
-      transition:transform .22s cubic-bezier(.2,.9,.3,1),box-shadow .22s, background .22s;
-    }
-    .btn.primary{
-      background: linear-gradient(90deg, var(--accent-alpha), rgba(0,0,0,0.03));
-      border:1px solid rgba(11,11,11,0.06);
-      color:var(--text);
-    }
+    .btn{padding:11px 18px;border-radius:999px;font-weight:700;border:1px solid rgba(15,15,15,0.06);text-decoration:none;color:var(--text);background:#fff;box-shadow:0 8px 22px rgba(0,0,0,0.03);transition:transform .22s,box-shadow .22s}
+    .btn.primary{background: linear-gradient(90deg, var(--accent-alpha), rgba(0,0,0,0.03));border:1px solid rgba(11,11,11,0.06)}
     .btn:hover{transform:translateY(-6px);box-shadow:var(--accent-shadow)}
 
     /* Logo */
@@ -75,36 +43,16 @@
 
     /* Projects */
     .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-    .card{
-      background:var(--card);
-      border-radius:14px;
-      padding:18px;
-      border:1px solid rgba(15,15,15,0.04);
-      box-shadow:0 18px 42px rgba(10,10,10,0.03);
-      transition:transform .36s cubic-bezier(.2,.9,.3,1),box-shadow .36s,filter .36s;
-      position:relative;
-      overflow:visible;
-    }
-    .card:hover{
-      transform:translateY(-12px);
-      box-shadow:0 60px 110px rgba(10,10,10,0.08);
-      filter:brightness(1.01);
-    }
-
+    .card{background:var(--card);border-radius:14px;padding:18px;border:1px solid rgba(15,15,15,0.04);box-shadow:0 18px 42px rgba(10,10,10,0.03);transition:transform .36s,box-shadow .36s;position:relative;overflow:visible}
+    .card.top-highlight{border-left:4px solid var(--accent);padding-left:14px}
+    .card:hover{transform:translateY(-12px);box-shadow:0 60px 110px rgba(10,10,10,0.08);filter:brightness(1.01)}
     .thumb{height:110px;border-radius:10px;background:linear-gradient(180deg,#f8f8f8,#fff);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;margin-bottom:12px}
     .url{font-size:13px;color:var(--muted);margin-bottom:8px}
     .title{font-weight:800;margin-bottom:6px;font-size:18px}
     .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
-    .card a{
-      display:inline-block;padding:9px 14px;border-radius:10px;text-decoration:none;font-weight:800;color:var(--text);
-      position:relative;overflow:hidden;border:1px solid rgba(0,0,0,0.06)
-    }
-    /* animated underline */
-    .card a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;transition:transform .28s cubic-bezier(.2,.9,.3,1);background:var(--accent)}
+    .card a{display:inline-block;padding:9px 14px;border-radius:10px;text-decoration:none;font-weight:800;color:var(--text);position:relative;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
+    .card a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;transition:transform .28s;background:var(--accent)}
     .card a:hover::after{transform:scaleX(1)}
-
-    /* subtle accent left border for highlighted top card (we removed numbering) */
-    .card.top-highlight{border-left:4px solid var(--accent);padding-left:14px}
 
     /* Services */
     .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:10px}
@@ -114,191 +62,161 @@
 
     /* Testimonials */
     .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:18px}
-    .test{
-      padding:20px;border-radius:12px;background:var(--card);border:1px solid rgba(15,15,15,0.04);
-      box-shadow:0 14px 36px rgba(10,10,10,0.03);
-      opacity:0;transform:translateY(10px);
-      transition:opacity 1.4s cubic-bezier(.2,.9,.3,1),transform 1.4s cubic-bezier(.2,.9,.3,1);
-      display:none;
-    }
+    .test{padding:20px;border-radius:12px;background:var(--card);border:1px solid rgba(15,15,15,0.04);box-shadow:0 14px 36px rgba(10,10,10,0.03);opacity:0;transform:translateY(10px);transition:opacity 1.4s,transform 1.4s;display:none}
     .test.visible{display:block;opacity:1;transform:none}
     .test p{color:var(--muted);margin:0 0 10px}
     .test strong{display:block;margin-top:10px;color:var(--text)}
 
     /* Skills */
     .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-    .skill{
-      padding:9px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);color:var(--muted);font-weight:700;background:linear-gradient(180deg,var(--accent-alpha),transparent);
-      transition:transform .18s, box-shadow .18s;
-    }
+    .skill{padding:9px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);color:var(--muted);font-weight:700;background:linear-gradient(180deg,var(--accent-alpha),transparent);transition:transform .18s}
     .skill:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,0.04)}
 
     footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
 
-    /* micro interactions */
-    .card .url:hover{color:var(--text);text-decoration:underline}
-
-    @media(max-width:900px){
-      .hero{flex-direction:column;align-items:flex-start}
-      .logo-block{order:2;margin-top:12px}
-      .testimonials{grid-template-columns:1fr}
-    }
+    @media(max-width:900px){.hero{flex-direction:column;align-items:flex-start}.logo-block{order:2;margin-top:12px}.testimonials{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <header class="hero">
-    <div class="left">
-      <h1>Seif — WordPress Developer</h1>
-      <div class="entity">CraftPress</div>
-
-      <p class="lead">
-        Professional WordPress Developer and founder of <strong>CraftPress</strong>.
-        Specialized in fast, modern, corporate-oriented WordPress websites using Elementor.
-        Worked full-time on <strong>Mostaql</strong> for 2 years and completed
-        <strong>22 projects</strong> with a <strong>5-star rating</strong>.
-        <a href="https://mostaql.com/u/E_seif" target="_blank" rel="noopener" style="text-decoration:underline;color:var(--text);font-weight:700;">
-          View My Mostaql Profile →
-        </a>
-      </p>
-
-      <div class="controls">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn" href="mailto:seiffayed08@gmail.com">Email</a>
-        <a class="btn" href="https://wa.me/201503881330">WhatsApp</a>
-        <a class="btn" href="Seif-CV.pdf" download>Download CV</a>
-      </div>
+    <!-- top language switch -->
+    <div class="top-row">
+      <a class="lang-btn" href="index-ar.html" aria-label="Arabic language button">🇸🇦 <span style="font-weight:800">العربية</span></a>
     </div>
 
-    <div class="logo-block">
-      <img class="logo" src="./craftpress-logo.png" alt="CraftPress logo">
-    </div>
-  </header>
+    <header class="hero">
+      <div class="left">
+        <h1>Seif — WordPress Developer</h1>
+        <div class="entity">CraftPress</div>
 
-  <div class="divider"></div>
+        <p class="lead">
+          Professional WordPress Developer and founder of <strong>CraftPress</strong>.
+          Specialized in fast, modern, corporate-oriented WordPress websites using Elementor.
+          Worked full-time on <strong>Mostaql</strong> for 2 years and completed
+          <strong>22 projects</strong> with a <strong>5-star rating</strong>.
+          <a href="https://mostaql.com/u/E_seif" target="_blank" rel="noopener" style="text-decoration:underline;color:var(--text);font-weight:700;">
+            View My Mostaql Profile →
+          </a>
+        </p>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Some of the Projects I've Built</h2>
-
-    <div class="projects">
-      <!-- GMetrics moved to #1 and highlighted (no numbering) -->
-      <div class="card top-highlight" role="article" aria-label="GMetrics">
-        <div class="thumb">gmetrics.com</div>
-        <div class="url">gmetrics.com</div>
-        <div class="title">Gmetrics</div>
-        <div class="meta">Corporate Website — WP</div>
-        <a href="https://gmetrics.com/" target="_blank" rel="noopener">Open site</a>
+        <div class="controls">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="mailto:seiffayed08@gmail.com">Email</a>
+          <a class="btn" href="https://wa.me/201503881330">WhatsApp</a>
+          <a class="btn" href="Seif-CV.pdf" download>Download CV</a>
+        </div>
       </div>
 
-      <!-- EMMRCEM -->
-      <div class="card" role="article" aria-label="EMMRCEM">
-        <div class="thumb">emmrcem.com</div>
-        <div class="url">emmrcem.com</div>
-        <div class="title">EMMRCEM</div>
-        <div class="meta">Corporate Site — Elementor</div>
-        <a href="https://emmrcem.com/" target="_blank" rel="noopener">Open site</a>
+      <div class="logo-block">
+        <img class="logo" src="./craftpress-logo.png" alt="CraftPress logo">
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Some of the Projects I've Built</h2>
+
+      <div class="projects">
+        <div class="card top-highlight" role="article" aria-label="GMetrics">
+          <div class="thumb">gmetrics.com</div>
+          <div class="url">gmetrics.com</div>
+          <div class="title">GMetrics</div>
+          <div class="meta">Corporate Website — WP</div>
+          <a href="https://gmetrics.com/" target="_blank" rel="noopener">Open site</a>
+        </div>
+
+        <div class="card" role="article" aria-label="EMMRCEM">
+          <div class="thumb">emmrcem.com</div>
+          <div class="url">emmrcem.com</div>
+          <div class="title">EMMRCEM</div>
+          <div class="meta">Corporate Site — Elementor</div>
+          <a href="https://emmrcem.com/" target="_blank" rel="noopener">Open site</a>
+        </div>
+
+        <div class="card" role="article" aria-label="Zomor">
+          <div class="thumb">zomor.com</div>
+          <div class="url">zomor.com</div>
+          <div class="title">Zomor</div>
+          <div class="meta">Corporate — WP</div>
+          <a href="https://zomor.com/" target="_blank" rel="noopener">Open site</a>
+        </div>
+
+        <!-- remaining projects (preserved order) -->
+        <div class="card" role="article" aria-label="Fosol Al Khair"><div class="thumb">fosolalkhair.com</div><div class="url">fosolalkhair.com</div><div class="title">Fosol Al Khair</div><div class="meta">Full Development — WP/Elementor</div><a href="https://fosolalkhair.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Dr Mahmoud Hani"><div class="thumb">drmahmoudhani.com</div><div class="url">drmahmoudhani.com</div><div class="title">Dr Mahmoud Hani</div><div class="meta">WP + Elementor + Tutor LMS</div><a href="https://drmahmoudhani.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Majal Al Majd"><div class="thumb">majal-almajd.com</div><div class="url">majal-almajd.com</div><div class="title">Majal Al Majd</div><div class="meta">Business — Elementor</div><a href="https://majal-almajd.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Dimensions HR"><div class="thumb">hr.dimensions.vc</div><div class="url">hr.dimensions.vc</div><div class="title">Dimensions HR</div><div class="meta">HR Platform — WP</div><a href="https://hr.dimensions.vc/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="MK Advocate"><div class="thumb">mkadvocte.com</div><div class="url">mkadvocte.com</div><div class="title">MK Advocate</div><div class="meta">Law Firm — WP</div><a href="https://mkadvocte.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Troy KSA"><div class="thumb">troyksa.com</div><div class="url">troyksa.com</div><div class="title">Troy KSA</div><div class="meta">Company Website — WP</div><a href="https://troyksa.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="NS Law Firm"><div class="thumb">nslawfirm.co</div><div class="url">nslawfirm.co</div><div class="title">NS Law Firm</div><div class="meta">Legal Services — Elementor</div><a href="https://nslawfirm.co/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Taknologia"><div class="thumb">taknologiaalhatef.com</div><div class="url">taknologiaalhatef.com</div><div class="title">Taknologia Al Hatef</div><div class="meta">Technology Company</div><a href="https://taknologiaalhatef.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Target Plus"><div class="thumb">targetplusagency.com</div><div class="url">targetplusagency.com</div><div class="title">Target Plus Agency</div><div class="meta">Digital Agency — Elementor</div><a href="https://targetplusagency.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Dream One"><div class="thumb">dreamone.ae</div><div class="url">dreamone.ae</div><div class="title">Dream One</div><div class="meta">Full Business Website</div><a href="https://dreamone.ae/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Atlas Original"><div class="thumb">atlasoriginal-iq.com</div><div class="url">atlasoriginal-iq.com</div><div class="title">Atlas Original Iraq</div><div class="meta">Company Website — WP</div><a href="https://atlasoriginal-iq.com/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="NeuroMed"><div class="thumb">staging.neuromed.eg</div><div class="url">staging.neuromed.eg</div><div class="title">NeuroMed (staging)</div><div class="meta">Medical Center Website</div><a href="https://staging.neuromed.eg/" target="_blank" rel="noopener">Open site</a></div>
+        <div class="card" role="article" aria-label="Jusur"><div class="thumb">jusuraltamayuz.com</div><div class="url">jusuraltamayuz.com</div><div class="title">Jusur Al Tamayuz</div><div class="meta">Corporate Identity Website</div><a href="https://jusuraltamayuz.com/" target="_blank" rel="noopener">Open site</a></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SERVICES -->
+    <section style="margin-top:26px;">
+      <h2>Services</h2>
+      <div class="services">
+        <div class="service"><h4>Corporate Websites</h4><p>Full WordPress sites with clear brand alignment, services, team, contact and SEO-ready structure.</p></div>
+        <div class="service"><h4>Landing Pages & Campaigns</h4><p>High-converting landing pages built with Elementor, optimized for performance and tracking.</p></div>
+        <div class="service"><h4>Maintenance & Optimization</h4><p>Speed improvements, security hardening, plugin updates and ongoing maintenance.</p></div>
       </div>
 
-      <!-- Zomor moved to #3 (no numbering) -->
-      <div class="card" role="article" aria-label="Zomor">
-        <div class="thumb">zomor.com</div>
-        <div class="url">zomor.com</div>
-        <div class="title">Zomor</div>
-        <div class="meta">Corporate — WP</div>
-        <a href="https://zomor.com/" target="_blank" rel="noopener">Open site</a>
+      <h2 style="margin-top:26px">Testimonials</h2>
+      <div class="testimonials">
+        <div class="test"><p>"Seif delivered our corporate site on time with excellent attention to detail — fast loading and looks great on mobile."</p><strong>— Ahmed, CEO</strong></div>
+        <div class="test"><p>"Professional, responsive, and delivered beyond expectations. Highly recommended for agency-level work."</p><strong>— Layla, Marketing Manager</strong></div>
+        <div class="test"><p>"Reliable, fast, and communicates clearly. The website exceeded our expectations in both performance and design."</p><strong>— Omar, Project Lead</strong></div>
+        <div class="test"><p>"Amazing understanding of requirements. Seif handled everything from structure to UX flawlessly."</p><strong>— Randa, Operations Manager</strong></div>
+        <div class="test"><p>"Delivered a clean, modern website. Great attention to detail and top-tier professionalism."</p><strong>— Khaled, Founder</strong></div>
+        <div class="test"><p>"Perfect delivery. Fast, accurate, and fully aligned with our brand identity."</p><strong>— Sara, Brand Supervisor</strong></div>
+        <div class="test"><p>"Seif is one of the best WordPress developers we’ve worked with — highly recommended."</p><strong>— Youssef, Agency Director</strong></div>
+        <div class="test"><p>"Clear communication, exceptional work quality, and delivered before deadline. Great experience overall."</p><strong>— Mona, Business Owner</strong></div>
       </div>
 
-      <!-- remaining projects -->
-      <div class="card" role="article" aria-label="Fosol Al Khair"><div class="thumb">fosolalkhair.com</div><div class="url">fosolalkhair.com</div><div class="title">Fosol Al Khair</div><div class="meta">Full Development — WP/Elementor</div><a href="https://fosolalkhair.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Dr Mahmoud Hani"><div class="thumb">drmahmoudhani.com</div><div class="url">drmahmoudhani.com</div><div class="title">Dr Mahmoud Hani</div><div class="meta">WP + Elementor + Tutor LMS</div><a href="https://drmahmoudhani.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Majal Al Majd"><div class="thumb">majal-almajd.com</div><div class="url">majal-almajd.com</div><div class="title">Majal Al Majd</div><div class="meta">Business — Elementor</div><a href="https://majal-almajd.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Dimensions HR"><div class="thumb">hr.dimensions.vc</div><div class="url">hr.dimensions.vc</div><div class="title">Dimensions HR</div><div class="meta">HR Platform — WP</div><a href="https://hr.dimensions.vc/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="MK Advocate"><div class="thumb">mkadvocte.com</div><div class="url">mkadvocte.com</div><div class="title">MK Advocate</div><div class="meta">Law Firm — WP</div><a href="https://mkadvocte.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Troy KSA"><div class="thumb">troyksa.com</div><div class="url">troyksa.com</div><div class="title">Troy KSA</div><div class="meta">Company Website — WP</div><a href="https://troyksa.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="NS Law Firm"><div class="thumb">nslawfirm.co</div><div class="url">nslawfirm.co</div><div class="title">NS Law Firm</div><div class="meta">Legal Services — Elementor</div><a href="https://nslawfirm.co/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Taknologia"><div class="thumb">taknologiaalhatef.com</div><div class="url">taknologiaalhatef.com</div><div class="title">Taknologia Al Hatef</div><div class="meta">Technology Company</div><a href="https://taknologiaalhatef.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Target Plus"><div class="thumb">targetplusagency.com</div><div class="url">targetplusagency.com</div><div class="title">Target Plus Agency</div><div class="meta">Digital Agency — Elementor</div><a href="https://targetplusagency.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Dream One"><div class="thumb">dreamone.ae</div><div class="url">dreamone.ae</div><div class="title">Dream One</div><div class="meta">Full Business Website</div><a href="https://dreamone.ae/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Atlas Original"><div class="thumb">atlasoriginal-iq.com</div><div class="url">atlasoriginal-iq.com</div><div class="title">Atlas Original Iraq</div><div class="meta">Company Website — WP</div><a href="https://atlasoriginal-iq.com/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="NeuroMed"><div class="thumb">staging.neuromed.eg</div><div class="url">staging.neuromed.eg</div><div class="title">NeuroMed </div><div class="meta">Medical Center Website</div><a href="https://staging.neuromed.eg/" target="_blank" rel="noopener">Open site</a></div>
-      <div class="card" role="article" aria-label="Jusur"><div class="thumb">jusuraltamayuz.com</div><div class="url">jusuraltamayuz.com</div><div class="title">Jusur Al Tamayuz</div><div class="meta">Corporate Identity Website</div><a href="https://jusuraltamayuz.com/" target="_blank" rel="noopener">Open site</a></div>
+      <div class="divider" style="margin-top:22px"></div>
 
-    </div>
-  </section>
+      <h2>Skills & Approach</h2>
+      <p style="color:var(--muted);max-width:820px;">I deliver corporate-grade websites focused on clarity and measurable performance. My process emphasizes brand-aligned design, fast loading times, and straightforward maintenance. I work closely with clients to ensure the product matches business goals and provides a reliable platform for growth.</p>
 
-  <div class="divider"></div>
-
-  <!-- SERVICES -->
-  <section style="margin-top:26px;">
-    <h2>Services</h2>
-    <div class="services">
-      <div class="service">
-        <h4>Corporate Websites</h4>
-        <p>Full WordPress sites with clear brand alignment, services, team, contact and SEO-ready structure.</p>
+      <div class="skills">
+        <div class="skill">WordPress Development</div>
+        <div class="skill">Elementor Pro</div>
+        <div class="skill">Responsive Design</div>
+        <div class="skill">HTML / CSS</div>
+        <div class="skill">Performance Optimization</div>
+        <div class="skill">SEO Essentials</div>
+        <div class="skill">Copywriting</div>
+        <div class="skill">Content Structuring</div>
+        <div class="skill">Figma</div>
+        <div class="skill">UX Wireframing</div>
+        <div class="skill">Client Communication</div>
+        <div class="skill">Problem Solving</div>
+        <div class="skill">Time Management</div>
+        <div class="skill">Project Coordination</div>
       </div>
+    </section>
 
-      <div class="service">
-        <h4>Landing Pages & Campaigns</h4>
-        <p>High-converting landing pages built with Elementor, optimized for performance and tracking.</p>
-      </div>
-
-      <div class="service">
-        <h4>Maintenance & Optimization</h4>
-        <p>Speed improvements, security hardening, plugin updates and ongoing maintenance.</p>
-      </div>
-    </div>
-
-    <h2 style="margin-top:26px">Testimonials</h2>
-
-    <div class="testimonials">
-      <div class="test"><p>"Seif delivered our corporate site on time with excellent attention to detail — fast loading and looks great on mobile."</p><strong>— Ahmed, CEO</strong></div>
-      <div class="test"><p>"Professional, responsive, and delivered beyond expectations. Highly recommended for agency-level work."</p><strong>— Layla, Marketing Manager</strong></div>
-      <div class="test"><p>"Reliable, fast, and communicates clearly. The website exceeded our expectations in both performance and design."</p><strong>— Omar, Project Lead</strong></div>
-      <div class="test"><p>"Amazing understanding of requirements. Seif handled everything from structure to UX flawlessly."</p><strong>— Randa, Operations Manager</strong></div>
-      <div class="test"><p>"Delivered a clean, modern website. Great attention to detail and top-tier professionalism."</p><strong>— Khaled, Founder</strong></div>
-      <div class="test"><p>"Perfect delivery. Fast, accurate, and fully aligned with our brand identity."</p><strong>— Sara, Brand Supervisor</strong></div>
-      <div class="test"><p>"Seif is one of the best WordPress developers we’ve worked with — highly recommended."</p><strong>— Youssef, Agency Director</strong></div>
-      <div class="test"><p>"Clear communication, exceptional work quality, and delivered before deadline. Great experience overall."</p><strong>— Mona, Business Owner</strong></div>
-    </div>
-
-    <div class="divider" style="margin-top:22px"></div>
-
-    <h2>Skills & Approach</h2>
-    <p style="color:var(--muted);max-width:820px;">I deliver corporate-grade websites focused on clarity and measurable performance. My process emphasizes brand-aligned design, fast loading times, and straightforward maintenance. I work closely with clients to ensure the product matches business goals and provides a reliable platform for growth.</p>
-
-    <div class="skills">
-      <div class="skill">WordPress Development</div>
-      <div class="skill">Elementor Pro</div>
-      <div class="skill">Responsive Design</div>
-      <div class="skill">HTML / CSS</div>
-      <div class="skill">Performance Optimization</div>
-      <div class="skill">SEO Essentials</div>
-      <div class="skill">Copywriting</div>
-      <div class="skill">Content Structuring</div>
-      <div class="skill">Figma</div>
-      <div class="skill">UX Wireframing</div>
-      <div class="skill">Client Communication</div>
-      <div class="skill">Problem Solving</div>
-      <div class="skill">Time Management</div>
-      <div class="skill">Project Coordination</div>
-    </div>
-
-  </section>
-
-  <footer>
-    © 2025 Seif AbdeHaleem — Founder, CraftPress
-  </footer>
-
-</div>
+    <footer>© 2025 Seif AbdeHaleem — Founder, CraftPress</footer>
+  </div>
 
 <script>
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) el.scrollIntoView({behavior:'smooth'});
     });
   });
 
@@ -307,21 +225,17 @@
     const slides = Array.from(document.querySelectorAll('.test'));
     if (!slides.length) return;
     let index = 0;
-
     function showTwo(i){
       slides.forEach(s => s.classList.remove('visible'));
       slides[i % slides.length].classList.add('visible');
       slides[(i+1) % slides.length].classList.add('visible');
     }
-
     showTwo(index);
-
     setInterval(()=>{
       index = (index + 2) % slides.length;
       showTwo(index);
     }, 5200);
   })();
 </script>
-
 </body>
 </html>
