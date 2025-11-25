@@ -3,361 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Seif — Portfolio</title>
+  <title>Seif — WordPress Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="./craftpress-icon.png" />
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #0a0a0a;
-      --muted: #6b6b6b;
-      --card: #ffffff;
-      --accent: #111111;
-      --glass: rgba(10,10,10,0.04);
-      --radius:14px;
-      --maxw:1150px;
-      font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      --bg:#ffffff;--text:#0a0a0a;--muted:#6b6b6b;--card:#fff;--glass:rgba(10,10,10,0.04);
+      --radius:14px;--maxw:1150px;font-family:'Manrope',system-ui;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#ffffff 0%, #fbfbfb 100%);color:var(--text);-webkit-font-smoothing:antialiased}
+    body{margin:0;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased}
     .wrap{max-width:var(--maxw);margin:36px auto;padding:28px}
 
-    /* HERO */
     .hero{display:flex;gap:28px;align-items:center;justify-content:space-between}
-    .left{flex:1}
-    .logo-block{width:120px;height:120px;display:flex;align-items:center;justify-content:center}
-    img.logo{max-height:130px!important}{max-height:94px;display:block;filter:drop-shadow(0 8px 26px rgba(0,0,0,0.08));border-radius:12px}
-
-    h1{font-size:52px;margin:0;font-weight:800;letter-spacing:0.2px}
+    h1{font-size:52px;margin:0;font-weight:800}
     .entity{color:var(--muted);font-weight:700;margin-top:6px}
     p.lead{margin-top:14px;color:var(--muted);font-size:18px;max-width:720px}
 
+    .logo-block{width:150px;height:150px;display:flex;align-items:center;justify-content:center}
+    img.logo{max-height:130px!important;display:block;filter:drop-shadow(0 8px 26px rgba(0,0,0,0.08));border-radius:12px}
+
     .controls{display:flex;gap:12px;margin-top:18px}
-    .btn{padding:11px 16px;border-radius:12px;font-weight:700;border:1px solid rgba(15,15,15,0.06);text-decoration:none;color:var(--text);background:transparent;transition:transform .18s ease, box-shadow .18s ease}
-    .btn.primary{background:linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));}
+    .btn{padding:11px 16px;border-radius:12px;font-weight:700;border:1px solid rgba(15,15,15,0.06);
+      text-decoration:none;color:var(--text);transition:.2s;}
     .btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(15,15,15,0.06)}
 
     .divider{height:1px;background:var(--glass);margin:26px 0;border-radius:6px}
 
-    /* Projects grid */
     .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-    .card{background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:12px;padding:16px;border:1px solid rgba(15,15,15,0.04);box-shadow:0 10px 30px rgba(20,20,20,0.03);transition:transform .36s cubic-bezier(.2,.9,.3,1), box-shadow .36s}
+    .card{background:#fff;border-radius:12px;padding:16px;border:1px solid rgba(15,15,15,0.05);
+      box-shadow:0 10px 30px rgba(20,20,20,0.03);transition:.3s}
     .card:hover{transform:translateY(-10px);box-shadow:0 40px 80px rgba(20,20,20,0.07)}
-    .thumb{height:110px;border-radius:10px;background:linear-gradient(180deg,#f9f9f9,#fff);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;margin-bottom:10px}
+    .thumb{height:110px;border-radius:10px;background:#f6f6f6;display:flex;align-items:center;justify-content:center;
+      color:var(--muted);font-weight:700;margin-bottom:10px}
     .url{font-size:13px;color:var(--muted);margin-bottom:8px}
     .title{font-weight:700;margin-bottom:6px}
     .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
-    .card a{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);text-decoration:none;color:var(--text);font-weight:700}
 
-    /* Services */
     .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
-    .service{background:linear-gradient(180deg,#fff,#fbfbfb);border-radius:12px;padding:14px;border:1px solid rgba(15,15,15,0.04);box-shadow:0 8px 22px rgba(20,20,20,0.03);}
-    .service h4{margin:0 0 6px 0}
-    .service p{margin:0;color:var(--muted);font-size:14px}
+    .service{background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(15,15,15,0.05);
+      box-shadow:0 8px 22px rgba(20,20,20,0.03)}
 
-    /* Testimonials */
+    /* Testimonials Slider */
     .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:12px}
-    .test{padding:16px;border-radius:12px;background:#fff;border:1px solid rgba(15,15,15,0.04);box-shadow:0 8px 20px rgba(20,20,20,0.03)}
-    .test p{color:var(--muted);margin:0 0 8px 0}
-    .test strong{display:block;font-weight:700;margin-bottom:6px}
+    .test{padding:16px;border-radius:12px;background:#fff;border:1px solid rgba(15,15,15,0.05);
+      box-shadow:0 8px 20px rgba(20,20,20,0.03);opacity:0;transform:translateY(8px);
+      transition:opacity 1.2s cubic-bezier(.2,.9,.3,1),transform 1.2s cubic-bezier(.2,.9,.3,1);display:none}
+    .test.visible{display:block;opacity:1;transform:none}
 
-    /* Skills */
-    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
     .skill{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);color:var(--muted);font-weight:700}
 
-    footer{margin-top:30px;color:var(--muted);font-size:13px;text-align:center}
-
-    /* small helpers */
-    @media (max-width:900px){.hero{flex-direction:column;align-items:flex-start}.logo-block{order:2;margin-top:12px}}
-
-    /* subtle reveal animations */
-    .reveal{opacity:0;transform:translateY(8px);animation:reveal .7s forwards}
-    .r-delay-1{animation-delay:.06s}.r-delay-2{animation-delay:.12s}.r-delay-3{animation-delay:.2s}
-    @keyframes reveal{to{opacity:1;transform:none}}
-
-    /* link underline animation */
-    a.underline{position:relative}
-    a.underline:after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--text);transform:scaleX(0);transform-origin:right;transition:transform .28s}
-    a.underline:hover:after{transform:scaleX(1);transform-origin:left}
-
-    /* subtle micro interaction for url */
-    .url:hover{color:var(--text)}
-  
-
-    /* Testimonial slide animation */
-    .slide{opacity:0;transform:translateY(8px);transition:opacity 1.2s cubic-bezier(.2,.9,.3,1), transform 1.2s cubic-bezier(.2,.9,.3,1);display:none}
-    .slide.visible{display:block;opacity:1;transform:none}
+    @media(max-width:900px){.hero{flex-direction:column;align-items:flex-start}.logo-block{order:2;margin-top:12px}}
   </style>
 </head>
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <header class="hero">
-      <div class="left">
-        <h1 class="reveal r-delay-1">Seif — WordPress Developer</h1>
-        <div class="entity reveal r-delay-2">CraftPress</div>
-        <p class="lead reveal r-delay-3">Professional WordPress Developer and founder of <strong>CraftPress</strong>, specializing in modern, fast, and business‑oriented websites. I build polished corporate experiences using WordPress, Elementor and lightweight custom front‑end where needed — focusing on performance, brand clarity and maintainability. I have also worked full‑time on <strong>Mostaql</strong> for 2 years, completing <strong>22 projects</strong> with a perfect <strong>5‑star rating</strong>. <a href="https://mostaql.com/u/E_seif" target="_blank" style="text-decoration:underline;color:var(--text);font-weight:700;">View My Mostaql Profile →</a></p>
+<header class="hero">
+  <div class="left">
+    <h1>Seif — WordPress Developer</h1>
+    <div class="entity">CraftPress</div>
+    <p class="lead">Professional WordPress Developer and founder of <strong>CraftPress</strong>, specializing in modern, fast, and business‑oriented websites. I have also worked full‑time on <strong>Mostaql</strong> for 2 years, completing <strong>22 projects</strong> with a perfect 5‑star rating. <a href="https://mostaql.com/u/E_seif" target="_blank">View My Mostaql Profile →</a></p>
 
-        <div class="controls reveal r-delay-3">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn" href="mailto:seiffayed08@gmail.com">Email</a>
-          <a class="btn" href="https://wa.me/201503881330">WhatsApp</a>
-          <a class="btn" href="/mnt/data/ChatGPT Image Nov 25, 2025, 08_52_02 PM.png" download>Download CV</a>
-        </div>
-      </div>
-
-      <div class="logo-block reveal r-delay-2">
-        <img class="logo" src="./craftpress-icon.png" alt="CraftPress icon">
-      </div>
-    </header>
-
-    <div class="divider"></div>
-
-    <section id="projects">
-      <h2 class="reveal r-delay-1">Some of the Projects I've Built</h2>
-      <div class="projects">
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">emmrcem.com</div>
-          <div class="url">emmrcem.com</div>
-          <div class="title">EMMRCEM</div>
-          <div class="meta">Role: Corporate Site — Elementor</div>
-          <a class="underline" href="https://emmrcem.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">fosolalkhair.com</div>
-          <div class="url">fosolalkhair.com</div>
-          <div class="title">Fosol Al Khair</div>
-          <div class="meta">Role: Full Development — WordPress / Elementor</div>
-          <a class="underline" href="https://fosolalkhair.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">drmahmoudhani.com</div>
-          <div class="url">drmahmoudhani.com</div>
-          <div class="title">Dr Mahmoud Hani</div>
-          <div class="meta">Role: Full Development — WordPress / Elementor / Tutor LMS</div>
-          <a class="underline" href="https://drmahmoudhani.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">gmetrics.com</div>
-          <div class="url">gmetrics.com</div>
-          <div class="title">GMetrics</div>
-          <div class="meta">Role: Corporate Website — WordPress</div>
-          <a class="underline" href="https://gmetrics.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">majal-almajd.com</div>
-          <div class="url">majal-almajd.com</div>
-          <div class="title">Majal Al Majd</div>
-          <div class="meta">Role: Business Website — Elementor</div>
-          <a class="underline" href="https://majal-almajd.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">hr.dimensions.vc</div>
-          <div class="url">hr.dimensions.vc</div>
-          <div class="title">Dimensions HR</div>
-          <div class="meta">Role: HR Platform Site — WordPress</div>
-          <a class="underline" href="https://hr.dimensions.vc/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">mkadvocte.com</div>
-          <div class="url">mkadvocte.com</div>
-          <div class="title">MK Advocate</div>
-          <div class="meta">Role: Law Firm Website — WordPress</div>
-          <a class="underline" href="https://mkadvocte.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">troyksa.com</div>
-          <div class="url">troyksa.com</div>
-          <div class="title">Troy KSA</div>
-          <div class="meta">Role: Company Website — WordPress</div>
-          <a class="underline" href="https://troyksa.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">nslawfirm.co</div>
-          <div class="url">nslawfirm.co</div>
-          <div class="title">NS Law Firm</div>
-          <div class="meta">Role: Legal Services Website — Elementor</div>
-          <a class="underline" href="https://nslawfirm.co/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">taknologiaalhatef.com</div>
-          <div class="url">taknologiaalhatef.com</div>
-          <div class="title">Taknologia Al Hatef</div>
-          <div class="meta">Role: Technology Company Website</div>
-          <a class="underline" href="https://taknologiaalhatef.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">targetplusagency.com</div>
-          <div class="url">targetplusagency.com</div>
-          <div class="title">Target Plus Agency</div>
-          <div class="meta">Role: Digital Agency Website — Elementor</div>
-          <a class="underline" href="https://targetplusagency.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">dreamone.ae</div>
-          <div class="url">dreamone.ae</div>
-          <div class="title">Dream One</div>
-          <div class="meta">Role: Full Business Website</div>
-          <a class="underline" href="https://dreamone.ae/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">atlasoriginal-iq.com</div>
-          <div class="url">atlasoriginal-iq.com</div>
-          <div class="title">Atlas Original Iraq</div>
-          <div class="meta">Role: Company Website — WordPress</div>
-          <a class="underline" href="https://atlasoriginal-iq.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">staging.neuromed.eg</div>
-          <div class="url">staging.neuromed.eg</div>
-          <div class="title">NeuroMed (staging)</div>
-          <div class="meta">Role: Medical Center Website</div>
-          <a class="underline" href="https://staging.neuromed.eg/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">jusuraltamayuz.com</div>
-          <div class="url">jusuraltamayuz.com</div>
-          <div class="title">Jusur Al Tamayuz</div>
-          <div class="meta">Role: Corporate Identity Website</div>
-          <a class="underline" href="https://jusuraltamayuz.com/" target="_blank">Open site</a>
-        </div>
-
-        <div class="card reveal r-delay-2">
-          <div class="thumb">zomor.com</div>
-          <div class="url">zomor.com</div>
-          <div class="title">Zomor</div>
-          <div class="meta">Role: Company Site — WordPress</div>
-          <a class="underline" href="https://zomor.com/" target="_blank">Open site</a>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section style="margin-top:26px;">
-      <h2 class="reveal r-delay-1">Services</h2>
-      <div class="services">
-        <div class="service">
-          <h4>Corporate Websites</h4>
-          <p>Full WordPress sites with clear brand alignment, pages for services, team, contact and SEO-ready structure.</p>
-        </div>
-        <div class="service">
-          <h4>Landing Pages & Campaigns</h4>
-          <p>High-converting landing pages built with Elementor, optimized for performance and tracking.</p>
-        </div>
-        <div class="service">
-          <h4>Maintenance & Optimization</h4>
-          <p>Speed improvements, security hardening, plugin updates and ongoing maintenance.</p>
-        </div>
-      </div>
-
-      <h2 class="reveal r-delay-1" style="margin-top:26px">Testimonials</h2>
-      <div class="testimonials slider">
-        <div class="test slide">
-          <p>"Seif delivered our corporate site on time with excellent attention to detail — fast loading and looks great on mobile."</p>
-          <strong>— Ahmed, CEO</strong>
-        </div>
-        <div class="test slide">
-          <p>"Professional, responsive, and delivered beyond expectations. Highly recommended for agency-level work."</p>
-          <strong>— Layla, Marketing Manager</strong>
-        </div>
-        <div class="test slide">
-          <p>"Reliable, fast, and communicates clearly. The website exceeded our expectations in both performance and design."</p>
-          <strong>— Omar, Project Lead</strong>
-        </div>
-        <div class="test slide">
-          <p>"Amazing understanding of requirements. Seif handled everything from structure to UX flawlessly."</p>
-          <strong>— Randa, Operations Manager</strong>
-        </div>
-        <div class="test slide">
-          <p>"Delivered a clean, modern website. Great attention to detail and top‑tier professionalism."</p>
-          <strong>— Khaled, Founder</strong>
-        </div>
-        <div class="test slide">
-          <p>"Perfect delivery. Fast, accurate, and fully aligned with our brand identity."</p>
-          <strong>— Sara, Brand Supervisor</strong>
-        </div>
-        <div class="test slide">
-          <p>"Seif is one of the best WordPress developers we’ve worked with — highly recommended."</p>
-          <strong>— Youssef, Agency Director</strong>
-        </div>
-        <div class="test slide">
-          <p>"Clear communication, exceptional work quality, and delivered before deadline. Great experience overall."</p>
-          <strong>— Mona, Business Owner</strong>
-        </div>
-      </div>
-
-      <script>
-      // Testimonial slider
-      let index = 0;
-      const slides = Array.from(document.querySelectorAll('.slide'));
-      function rotate() {
-        // hide all
-        slides.forEach(s => { s.classList.remove('visible'); });
-        // show two with smooth fade
-        for (let i = index; i < index + 2; i++) {
-          slides[i % slides.length].classList.add('visible');
-        }
-        index = (index + 2) % slides.length;
-      }
-      // initial show
-      rotate();
-      // slower, smoother rotation (5s)
-      setInterval(rotate, 5000);
-      </script>
-
-      <div class="divider" style="margin-top:22px"></div>
-
-      <h2 class="reveal r-delay-1">Skills & Approach</h2>
-      <p style="color:var(--muted);max-width:820px;">I deliver corporate-grade websites focused on clarity and measurable performance. My process emphasizes brand-aligned design, fast loading times, and straightforward maintenance. I work closely with clients to ensure the product matches business goals and provides a reliable platform for growth.</p>
-
-      <div class="skills reveal r-delay-2" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;">
-        <div class="skill">WordPress Development</div>
-        <div class="skill">Elementor Pro</div>
-        <div class="skill">Responsive Design</div>
-        <div class="skill">HTML / CSS</div>
-        <div class="skill">Performance Optimization</div>
-        <div class="skill">SEO Essentials</div>
-        <div class="skill">Copywriting</div>
-        <div class="skill">Content Structuring</div>
-        <div class="skill">Figma</div>
-        <div class="skill">UX Wireframing</div>
-        <div class="skill">Client Communication</div>
-        <div class="skill">Problem Solving</div>
-        <div class="skill">Time Management</div>
-        <div class="skill">Project Coordination</div>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 Seif AbdeHaleem — Founder, CraftPress
-    </footer>
-
+    <div class="controls">
+      <a class="btn" href="#projects">View Projects</a>
+      <a class="btn" href="mailto:seiffayed08@gmail.com">Email</a>
+      <a class="btn" href="https://wa.me/201503881330">WhatsApp</a>
+      <a class="btn" href="Seif-CV.pdf" download>Download CV</a>
+    </div>
   </div>
 
-  <script>
-    // small enhancement: smooth scroll for anchor
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'}); });
-    });
+  <div class="logo-block">
+    <img class="logo" src="./craftpress-logo.png" alt="CraftPress logo">
+  </div>
+</header>
 
-    // reveal sequence already via CSS animation
-  </script>
-</body>
-</html>
+<div class="divider"></div>
+
+<section id="projects">
+  <h2>Some of the Projects I've Built</h2>
+  <div class="projects">
+
+    <div class="card"><div class="thumb">emmrcem.com</div><div class="url">emmrcem.com</div><div class="title">EMMRCEM</div><div class="meta">Corporate Site — Elementor</div><a href="https://emmrcem.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">fosolalkhair.com</div><div class="url">fosolalkhair.com</div><div class="title">Fosol Al Khair</div><div class="meta">Full Development — WP/Elementor</div><a href="https://fosolalkhair.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">drmahmoudhani.com</div><div class="url">drmahmoudhani.com</div><div class="title">Dr Mahmoud Hani</div><div class="meta">WP + Elementor + Tutor LMS</div><a href="https://drmahmoudhani.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">gmetrics.com</div><div class="url">gmetrics.com</div><div class="title">GMetrics</div><div class="meta">Corporate Website — WP</div><a href="https://gmetrics.com/" target="_blank">Open site</a></div>
+
+    <div class="card"><div class="thumb">majal-almajd.com</div><div class="url">majal-almajd.com</div><div class="title">Majal Al Majd</div><div class="meta">Business — Elementor</div><a href="https://majal-almajd.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">hr.dimensions.vc</div><div class="url">hr.dimensions.vc</div><div class="title">Dimensions HR</div><div class="meta">HR Platform — WP</div><a href="https://hr.dimensions.vc/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">mkadvocte.com</div><div class="url">mkadvocte.com</div><div class="title">MK Advocate</div><div class="meta">Law Firm — WP</div><a href="https://mkadvocte.com/" target="_blank">Open site</a></div>
+
+    <div class="card"><div class="thumb">troy
