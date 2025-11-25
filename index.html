@@ -1,48 +1,172 @@
-<section id="projects" class="projects-clean">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seif — WordPress Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./craftpress-icon.png" />
+  <style>
+    :root{
+      --bg:#ffffff;--text:#0a0a0a;--muted:#6b6b6b;--card:#fff;--glass:rgba(10,10,10,0.04);
+      --radius:14px;--maxw:1150px;font-family:'Manrope',system-ui;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:28px}
 
+    .hero{display:flex;gap:28px;align-items:center;justify-content:space-between}
+    h1{font-size:52px;margin:0;font-weight:800}
+    .entity{color:var(--muted);font-weight:700;margin-top:6px}
+    p.lead{margin-top:14px;color:var(--muted);font-size:18px;max-width:720px}
+
+    .logo-block{width:150px;height:150px;display:flex;align-items:center;justify-content:center}
+    img.logo{max-height:130px!important;display:block;filter:drop-shadow(0 8px 26px rgba(0,0,0,0.08));border-radius:12px}
+
+    .controls{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:11px 16px;border-radius:12px;font-weight:700;border:1px solid rgba(15,15,15,0.06);
+      text-decoration:none;color:var(--text);transition:.2s;}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(15,15,15,0.06)}
+
+    .divider{height:1px;background:var(--glass);margin:26px 0;border-radius:6px}
+
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .card{background:#fff;border-radius:12px;padding:16px;border:1px solid rgba(15,15,15,0.05);
+      box-shadow:0 10px 30px rgba(20,20,20,0.03);transition:.3s}
+    .card:hover{transform:translateY(-10px);box-shadow:0 40px 80px rgba(20,20,20,0.07)}
+    .thumb{height:110px;border-radius:10px;background:#f6f6f6;display:flex;align-items:center;justify-content:center;
+      color:var(--muted);font-weight:700;margin-bottom:10px}
+    .url{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .title{font-weight:700;margin-bottom:6px}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
+
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:8px}
+    .service{background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(15,15,15,0.05);
+      box-shadow:0 8px 22px rgba(20,20,20,0.03)}
+
+    /* Testimonials Slider */
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:12px}
+    .test{padding:16px;border-radius:12px;background:#fff;border:1px solid rgba(15,15,15,0.05);
+      box-shadow:0 8px 20px rgba(20,20,20,0.03);opacity:0;transform:translateY(8px);
+      transition:opacity 1.2s cubic-bezier(.2,.9,.3,1),transform 1.2s cubic-bezier(.2,.9,.3,1);display:none}
+    .test.visible{display:block;opacity:1;transform:none}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .skill{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);color:var(--muted);font-weight:700}
+
+    @media(max-width:900px){.hero{flex-direction:column;align-items:flex-start}.logo-block{order:2;margin-top:12px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="left">
+    <h1>Seif — WordPress Developer</h1>
+    <div class="entity">CraftPress</div>
+    <p class="lead">Professional WordPress Developer and founder of <strong>CraftPress</strong>, specializing in modern, fast, and business‑oriented websites. I have also worked full‑time on <strong>Mostaql</strong> for 2 years, completing <strong>22 projects</strong> with a perfect 5‑star rating. <a href="https://mostaql.com/u/E_seif" target="_blank">View My Mostaql Profile →</a></p>
+
+    <div class="controls">
+      <a class="btn" href="#projects">View Projects</a>
+      <a class="btn" href="mailto:seiffayed08@gmail.com">Email</a>
+      <a class="btn" href="https://wa.me/201503881330">WhatsApp</a>
+      <a class="btn" href="Seif-CV.pdf" download>Download CV</a>
+    </div>
+  </div>
+
+  <div class="logo-block">
+    <img class="logo" src="./craftpress-logo.png" alt="CraftPress logo">
+  </div>
+</header>
+
+<div class="divider"></div>
+
+<section id="projects">
+  <h2>Some of the Projects I've Built</h2>
+  <div class="projects">
+
+    <div class="card"><div class="thumb">emmrcem.com</div><div class="url">emmrcem.com</div><div class="title">EMMRCEM</div><div class="meta">Corporate Site — Elementor</div><a href="https://emmrcem.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">fosolalkhair.com</div><div class="url">fosolalkhair.com</div><div class="title">Fosol Al Khair</div><div class="meta">Full Development — WP/Elementor</div><a href="https://fosolalkhair.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">drmahmoudhani.com</div><div class="url">drmahmoudhani.com</div><div class="title">Dr Mahmoud Hani</div><div class="meta">WP + Elementor + Tutor LMS</div><a href="https://drmahmoudhani.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">gmetrics.com</div><div class="url">gmetrics.com</div><div class="title">GMetrics</div><div class="meta">Corporate Website — WP</div><a href="https://gmetrics.com/" target="_blank">Open site</a></div>
+
+    <div class="card"><div class="thumb">majal-almajd.com</div><div class="url">majal-almajd.com</div><div class="title">Majal Al Majd</div><div class="meta">Business — Elementor</div><a href="https://majal-almajd.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">hr.dimensions.vc</div><div class="url">hr.dimensions.vc</div><div class="title">Dimensions HR</div><div class="meta">HR Platform — WP</div><a href="https://hr.dimensions.vc/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">mkadvocte.com</div><div class="url">mkadvocte.com</div><div class="title">MK Advocate</div><div class="meta">Law Firm — WP</div><a href="https://mkadvocte.com/" target="_blank">Open site</a></div>
+
+    <div class="card"><div class="thumb">troy
+<section id="projects" class="hover-list">
   <h2 class="p-head">Projects</h2>
 
-  <div class="p-block">
-    <div class="p-title">EMMRCEM</div>
-    <div class="p-sub">Corporate Website — emmrcem.com</div>
-    <a class="p-btn" href="https://emmrcem.com" target="_blank">Visit →</a>
+  <div class="project-list">
+    <div class="p-item" data-desc="Corporate Website — Elementor">EMMRCEM <a href="https://emmrcem.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Full Development — WordPress / Elementor">Fosol Al Khair <a href="https://fosolalkhair.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Tutor LMS + Elementor Platform">Dr Mahmoud Hani <a href="https://drmahmoudhani.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Corporate Presence & Branding">GMetrics <a href="https://gmetrics.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Business Website — Elementor">Majal Al Majd <a href="https://majal-almajd.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="HR Platform — WP">Dimensions HR <a href="https://hr.dimensions.vc" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Law Firm Website">MK Advocate <a href="https://mkadvocte.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Corporate Website">Troy KSA <a href="https://troyksa.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Legal Firm Website">NS Law Firm <a href="https://nslawfirm.co" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Technology Company">Taknologia Al Hatef <a href="https://taknologiaalhatef.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Agency Website">Target Plus Agency <a href="https://targetplusagency.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Business Website">Dream One <a href="https://dreamone.ae" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Corporate Website">Atlas Original IQ <a href="https://atlasoriginal-iq.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Medical Center Website">NeuroMed (staging) <a href="https://staging.neuromed.eg" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Corporate Identity Website">Jusur Al Tamayuz <a href="https://jusuraltamayuz.com" target="_blank">→</a></div>
+    <div class="p-item" data-desc="Corporate Website">Zomor <a href="https://zomor.com" target="_blank">→</a></div>
   </div>
 
-  <div class="p-block">
-    <div class="p-title">Fosol Al Khair</div>
-    <div class="p-sub">Full Development — fosolalkhair.com</div>
-    <a class="p-btn" href="https://fosolalkhair.com" target="_blank">Visit →</a>
-  </div>
-
-  <div class="p-block">
-    <div class="p-title">Dr Mahmoud Hani</div>
-    <div class="p-sub">LMS + Elementor — drmahmoudhani.com</div>
-    <a class="p-btn" href="https://drmahmoudhani.com" target="_blank">Visit →</a>
-  </div>
-
-  <div class="p-block">
-    <div class="p-title">GMetrics</div>
-    <div class="p-sub">Corporate — gmetrics.com</div>
-    <a class="p-btn" href="https://gmetrics.com" target="_blank">Visit →</a>
-  </div>
-
+  <div class="hover-box" id="hoverBox"></div>
 </section>
 
+<div class="divider"></div>
+
 <style>
-  .projects-clean{padding:20px 0}
+  .hover-list{padding:10px 0 30px 0;position:relative}
   .p-head{font-size:32px;margin-bottom:20px;font-weight:800}
-  .p-block{
-    padding:26px 0;border-bottom:1px solid rgba(0,0,0,0.06);
-    display:flex;align-items:center;justify-content:space-between;
-    transition:.25s;
+  .project-list{display:flex;flex-direction:column;gap:6px;position:relative}
+  .p-item{
+    padding:14px 6px;
+    font-size:20px;font-weight:700;
+    border-bottom:1px solid rgba(0,0,0,0.06);
+    cursor:pointer;
+    display:flex;justify-content:space-between;
+    align-items:center;
+    transition:.2s;
   }
-  .p-block:hover{padding-left:8px;background:#fafafa}
-  .p-title{font-size:20px;font-weight:800}
-  .p-sub{color:#6b6b6b;font-size:14px;margin-top:4px}
-  .p-btn{
-    font-weight:700;text-decoration:none;color:#000;
-    padding:8px 12px;border-radius:8px;
+  .p-item:hover{padding-left:10px}
+  .p-item a{text-decoration:none;color:#000;font-weight:900;font-size:20px}
+
+  /* Hover box */
+  .hover-box{
+    position:absolute;
+    right:0;top:80px;
+    width:260px;
+    padding:16px;
+    background:#fff;
+    border-radius:12px;
     border:1px solid rgba(0,0,0,0.06);
+    box-shadow:0 20px 40px rgba(0,0,0,0.06);
+    display:none;
+    font-size:14px;
+    color:#444;
   }
-  .p-btn:hover{background:#000;color:#fff}
 </style>
+
+<script>
+  const items = document.querySelectorAll('.p-item');
+  const hoverBox = document.getElementById('hoverBox');
+
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      hoverBox.style.display = 'block';
+      hoverBox.innerText = item.getAttribute('data-desc');
+      const rect = item.getBoundingClientRect();
+      hoverBox.style.top = (rect.top + window.scrollY + 10) + 'px';
+    });
+    item.addEventListener('mouseleave', () => {
+      hoverBox.style.display = 'none';
+    });
+  });
+</script>
