@@ -3,37 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portfolio — CraftPress</title>
+<title>All Projects — CraftPress</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Manrope;background:#fff}
-.wrap{max-width:1200px;margin:auto;padding:40px}
-h1{font-size:46px}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:28px;
-}
-.project img{width:100%;border-radius:16px}
-.project h4{margin:10px 0}
-.project a{font-weight:800;color:#2B8CFF;text-decoration:none}
+body{margin:0;font-family:Manrope;background:#fff;color:#000}
+.wrap{max-width:1200px;margin:auto;padding:32px}
+
+header{display:flex;justify-content:space-between;align-items:center}
+header img{height:34px}
+nav a{margin-left:24px;font-weight:700;text-decoration:none;color:#000}
+nav a:hover{color:#2B8CFF}
+
+h1{font-size:48px;margin:80px 0 40px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.card{border:1px solid #eee;border-radius:16px;overflow:hidden}
+.card img{width:100%}
+.card .info{padding:18px}
+.card a{color:#2B8CFF;font-weight:800;text-decoration:none}
 </style>
 </head>
-<body>
 
+<body>
 <div class="wrap">
+
+<header>
+  <img src="craftpress-logo.png" alt="CraftPress">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="mailto:seiffayed08@gmail.com">Contact</a>
+  </nav>
+</header>
+
 <h1>All Projects</h1>
 
-<div class="grid">
-  <!-- كرر نفس كارت المشروع -->
-  <div class="project"><img src="assets/images/projects/gmetrics.jpg"><h4>GMetrics</h4><a href="https://gmetrics.com/">Open site →</a></div>
-  <div class="project"><img src="assets/images/projects/zomor.jpg"><h4>Zomor</h4><a href="https://zomor.com/">Open site →</a></div>
-  <div class="project"><img src="assets/images/projects/emmrcem.jpg"><h4>EMMRCEM</h4><a href="https://emmrcem.com/">Open site →</a></div>
-  <div class="project"><img src="assets/images/projects/takmil.jpg"><h4>Takmil</h4><a href="https://takmil.sa/">Open site →</a></div>
-  <div class="project"><img src="assets/images/projects/saudi-kosovo.jpg"><h4>Saudi Kosovo</h4><a href="https://saudi-kosovo.org/">Open site →</a></div>
-  <div class="project"><img src="assets/images/projects/uptime.jpg"><h4>Uptime-I</h4><a href="https://uptime-i.com/">Open site →</a></div>
-</div>
-</div>
+<section class="grid">
+  <div class="card"><img src="assets/images/projects/gmetrics.jpg"><div class="info"><h4>GMetrics</h4><a href="https://gmetrics.com/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/zomor.jpg"><div class="info"><h4>Zomor</h4><a href="https://zomor.com/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/emmrcem.jpg"><div class="info"><h4>EMMRCEM</h4><a href="https://emmrcem.com/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/takmil.jpg"><div class="info"><h4>Takmil</h4><a href="https://takmil.sa/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/saudi-kosovo.jpg"><div class="info"><h4>Saudi Kosovo</h4><a href="https://saudi-kosovo.org/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/uptime-i.jpg"><div class="info"><h4>Uptime-I</h4><a href="https://uptime-i.com/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/ibnalrazi.jpg"><div class="info"><h4>Ibn Alrazi</h4><a href="https://ibnalrazi.net/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/allsupport.jpg"><div class="info"><h4>AllSupport</h4><a href="https://allsupport.live/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/entelaka.jpg"><div class="info"><h4>Entelaka</h4><a href="https://entelaka.com/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/cintero.jpg"><div class="info"><h4>Cintero</h4><a href="https://cintero.org/">Open site →</a></div></div>
+  <div class="card"><img src="assets/images/projects/gaetech.jpg"><div class="info"><h4>GAE Tech</h4><a href="https://gaetech.ca/">Open site →</a></div></div>
+</section>
 
+</div>
 </body>
 </html>
