@@ -4,45 +4,76 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Seif — WordPress Developer</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="./craftpress-icon.png" />
+
   <style>
     :root{
-      --bg:#ffffff;--text:#0a0a0a;--muted:#6b6b6b;--card:#fff;--glass:rgba(10,10,10,0.04);
-      --radius:14px;--maxw:1150px;font-family:'Manrope',system-ui;
-      --soft-shadow: 0 12px 36px rgba(10,10,10,0.04);
-      --accent-shadow: 0 30px 70px rgba(10,10,10,0.06);
-      --accent:#2B8CFF;--accent-alpha:rgba(43,140,255,.08);
+      --text:#0a0a0a;
+      --muted:#6b6b6b;
+      --card:#ffffff;
+      --glass:rgba(10,10,10,0.04);
+      --maxw:1150px;
+      --accent:#2B8CFF;
+      --accent-alpha:rgba(43,140,255,.10);
+      font-family:'Manrope',system-ui;
     }
     *{box-sizing:border-box}
     body{margin:0;background:linear-gradient(180deg,#fff,#fbfbfb);color:var(--text)}
     .wrap{max-width:var(--maxw);margin:48px auto;padding:32px}
 
-    .top-row{display:flex;justify-content:flex-end;margin-bottom:8px}
-    .lang-btn{font-weight:800;text-decoration:none;color:var(--text)}
+    /* top lang */
+    .top-row{display:flex;justify-content:flex-end;margin-bottom:10px}
+    .lang-btn{text-decoration:none;font-weight:800;color:var(--text)}
 
+    /* hero */
     .hero{display:flex;gap:28px;align-items:center;justify-content:space-between;
-      padding:28px;border-radius:16px;background:#fff;box-shadow:var(--soft-shadow)}
+      background:#fff;padding:28px;border-radius:16px;
+      box-shadow:0 18px 40px rgba(0,0,0,.04)}
     h1{font-size:54px;margin:0;font-weight:800}
-    .entity{color:var(--muted);font-weight:700;margin-top:8px}
-    p.lead{margin-top:14px;color:var(--muted);font-size:18px;max-width:760px;line-height:1.6}
+    .entity{margin-top:8px;font-weight:700;color:var(--muted)}
+    .lead{margin-top:14px;max-width:760px;font-size:18px;line-height:1.6;color:var(--muted)}
 
     .controls{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
     .btn{padding:11px 18px;border-radius:999px;font-weight:700;
-      border:1px solid rgba(0,0,0,.08);background:#fff;color:var(--text);
-      text-decoration:none;transition:.25s}
+      border:1px solid rgba(0,0,0,.08);background:#fff;
+      text-decoration:none;color:var(--text);
+      transition:.25s}
     .btn.primary{background:var(--accent-alpha)}
-    .btn:hover{transform:translateY(-5px);box-shadow:var(--accent-shadow)}
+    .btn:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.08)}
 
-    .logo{max-height:150px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.06))}
+    .logo{max-height:150px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.08))}
 
-    .divider{height:1px;background:var(--glass);margin:32px 0}
+    .divider{height:1px;background:var(--glass);margin:36px 0}
 
+    /* statement */
+    .statement{
+      max-width:920px;
+      font-size:22px;
+      font-weight:700;
+      line-height:1.55;
+      opacity:0;
+      transform:translateY(16px);
+      animation:reveal 1.1s cubic-bezier(.2,.9,.3,1) forwards;
+    }
+    .statement .highlight{color:var(--accent);position:relative}
+    .statement .highlight::after{
+      content:'';
+      position:absolute;left:-4px;bottom:2px;
+      width:calc(100% + 8px);height:8px;
+      background:var(--accent-alpha);
+      border-radius:6px;z-index:-1;
+    }
+    @keyframes reveal{to{opacity:1;transform:none}}
+
+    /* projects */
     .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-    .card{background:#fff;border-radius:14px;padding:18px;
+    .card{background:#fff;padding:18px;border-radius:14px;
       border:1px solid rgba(0,0,0,.05);
-      box-shadow:0 18px 42px rgba(0,0,0,.04);transition:.35s}
-    .card:hover{transform:translateY(-10px);box-shadow:0 60px 110px rgba(0,0,0,.08)}
+      box-shadow:0 18px 40px rgba(0,0,0,.04);
+      transition:.35s}
+    .card:hover{transform:translateY(-10px);box-shadow:0 60px 120px rgba(0,0,0,.08)}
     .thumb{height:110px;border-radius:10px;background:#f4f6fb;
       display:flex;align-items:center;justify-content:center;
       font-weight:800;color:var(--muted);margin-bottom:12px}
@@ -51,10 +82,12 @@
     .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
     .card a{text-decoration:none;font-weight:700;color:var(--text)}
 
-    footer{text-align:center;margin-top:40px;font-size:13px;color:var(--muted)}
+    footer{text-align:center;margin-top:44px;font-size:13px;color:var(--muted)}
 
     @media(max-width:900px){
       .hero{flex-direction:column;align-items:flex-start}
+      h1{font-size:44px}
+      .statement{font-size:19px}
     }
   </style>
 </head>
@@ -70,56 +103,51 @@
   <div>
     <h1>Seif — WordPress Developer</h1>
     <div class="entity">CraftPress</div>
+
     <p class="lead">
       Professional WordPress Developer and founder of <strong>CraftPress</strong>.
-      Specialized in fast, corporate-oriented WordPress websites.
-      Worked full-time on <strong>Mostaql</strong> for 2 years and completed
+      Specialized in fast, modern, business-oriented WordPress websites.
+      Worked full-time on <strong>Mostaql</strong> for 2 years and delivered
       <strong>22 projects</strong> with a 5-star rating.
     </p>
+
     <div class="controls">
       <a class="btn primary" href="#projects">View Projects</a>
       <a class="btn" href="mailto:seiffayed08@gmail.com">Email</a>
       <a class="btn" href="https://wa.me/201503881330">WhatsApp</a>
     </div>
   </div>
+
   <img src="craftpress-logo.png" class="logo" alt="CraftPress">
 </header>
 
 <div class="divider"></div>
 
+<p class="statement">
+  At <span class="highlight">CraftPress</span>, we build purposeful digital experiences designed to grow real businesses —
+  combining strategic branding, UX-driven design, robust WordPress development,
+  and conversion-focused content.
+</p>
+
+<div class="divider"></div>
+
 <section id="projects">
-<h2>Some of the Projects I've Built</h2>
-<div class="projects">
+  <h2>Some of the Projects I've Built</h2>
+  <div class="projects">
+    <!-- ALL PROJECTS (old + new) -->
+    <div class="card"><div class="thumb">gmetrics.com</div><div class="url">gmetrics.com</div><div class="title">GMetrics</div><div class="meta">Corporate Website</div><a href="https://gmetrics.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">emmrcem.com</div><div class="url">emmrcem.com</div><div class="title">EMMRCEM</div><div class="meta">Corporate Website</div><a href="https://emmrcem.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">zomor.com</div><div class="url">zomor.com</div><div class="title">Zomor</div><div class="meta">Corporate Website</div><a href="https://zomor.com/" target="_blank">Open site</a></div>
 
-<!-- OLD PROJECTS -->
-<div class="card"><div class="thumb">gmetrics.com</div><div class="url">gmetrics.com</div><div class="title">GMetrics</div><div class="meta">Corporate Website</div><a href="https://gmetrics.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">emmrcem.com</div><div class="url">emmrcem.com</div><div class="title">EMMRCEM</div><div class="meta">Corporate Website</div><a href="https://emmrcem.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">zomor.com</div><div class="url">zomor.com</div><div class="title">Zomor</div><div class="meta">Corporate Website</div><a href="https://zomor.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">fosolalkhair.com</div><div class="url">fosolalkhair.com</div><div class="title">Fosol Al Khair</div><div class="meta">WP / Elementor</div><a href="https://fosolalkhair.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">drmahmoudhani.com</div><div class="url">drmahmoudhani.com</div><div class="title">Dr Mahmoud Hani</div><div class="meta">WP + Tutor LMS</div><a href="https://drmahmoudhani.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">majal-almajd.com</div><div class="url">majal-almajd.com</div><div class="title">Majal Al Majd</div><div class="meta">Business Website</div><a href="https://majal-almajd.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">hr.dimensions.vc</div><div class="url">hr.dimensions.vc</div><div class="title">Dimensions HR</div><div class="meta">HR Platform</div><a href="https://hr.dimensions.vc/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">mkadvocte.com</div><div class="url">mkadvocte.com</div><div class="title">MK Advocate</div><div class="meta">Law Firm</div><a href="https://mkadvocte.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">troyksa.com</div><div class="url">troyksa.com</div><div class="title">Troy KSA</div><div class="meta">Company Website</div><a href="https://troyksa.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">nslawfirm.co</div><div class="url">nslawfirm.co</div><div class="title">NS Law Firm</div><div class="meta">Legal Website</div><a href="https://nslawfirm.co/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">taknologiaalhatef.com</div><div class="url">taknologiaalhatef.com</div><div class="title">Taknologia Al Hatef</div><div class="meta">Technology Company</div><a href="https://taknologiaalhatef.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">targetplusagency.com</div><div class="url">targetplusagency.com</div><div class="title">Target Plus Agency</div><div class="meta">Digital Agency</div><a href="https://targetplusagency.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">dreamone.ae</div><div class="url">dreamone.ae</div><div class="title">Dream One</div><div class="meta">Business Website</div><a href="https://dreamone.ae/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">atlasoriginal-iq.com</div><div class="url">atlasoriginal-iq.com</div><div class="title">Atlas Original Iraq</div><div class="meta">Company Website</div><a href="https://atlasoriginal-iq.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">staging.neuromed.eg</div><div class="url">staging.neuromed.eg</div><div class="title">NeuroMed</div><div class="meta">Medical Website</div><a href="https://staging.neuromed.eg/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">jusuraltamayuz.com</div><div class="url">jusuraltamayuz.com</div><div class="title">Jusur Al Tamayuz</div><div class="meta">Corporate Identity</div><a href="https://jusuraltamayuz.com/" target="_blank">Open site</a></div>
-
-<!-- NEW PROJECTS -->
-<div class="card"><div class="thumb">takmil.sa</div><div class="url">takmil.sa</div><div class="title">Takmil</div><div class="meta">Corporate Platform</div><a href="https://takmil.sa/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">saudi-kosovo.org</div><div class="url">saudi-kosovo.org</div><div class="title">Saudi Kosovo Council</div><div class="meta">Institutional Website</div><a href="https://saudi-kosovo.org/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">ibnalrazi.net</div><div class="url">ibnalrazi.net</div><div class="title">Ibn Al-Razi Medical Center</div><div class="meta">Medical Website</div><a href="https://ibnalrazi.net/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">allsupport.live</div><div class="url">allsupport.live</div><div class="title">AllSupport</div><div class="meta">Support Platform</div><a href="https://allsupport.live/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">entelaka.com</div><div class="url">entelaka.com</div><div class="title">Entelaka</div><div class="meta">Business Platform</div><a href="https://entelaka.com/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">cintero.org</div><div class="url">cintero.org</div><div class="title">Cintero</div><div class="meta">Organization Website</div><a href="https://cintero.org/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">gaetech.ca</div><div class="url">gaetech.ca</div><div class="title">GAE Tech</div><div class="meta">Technology Company</div><a href="https://gaetech.ca/" target="_blank">Open site</a></div>
-<div class="card"><div class="thumb">uptime-i.com</div><div class="url">uptime-i.com</div><div class="title">Uptime-I</div><div class="meta">Monitoring Platform</div><a href="https://uptime-i.com/" target="_blank">Open site</a></div>
-
-</div>
+    <div class="card"><div class="thumb">takmil.sa</div><div class="url">takmil.sa</div><div class="title">Takmil</div><div class="meta">Corporate Platform</div><a href="https://takmil.sa/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">saudi-kosovo.org</div><div class="url">saudi-kosovo.org</div><div class="title">Saudi Kosovo Council</div><div class="meta">Institutional Website</div><a href="https://saudi-kosovo.org/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">ibnalrazi.net</div><div class="url">ibnalrazi.net</div><div class="title">Ibn Al-Razi Medical Center</div><div class="meta">Medical Website</div><a href="https://ibnalrazi.net/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">allsupport.live</div><div class="url">allsupport.live</div><div class="title">AllSupport</div><div class="meta">Support Platform</div><a href="https://allsupport.live/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">entelaka.com</div><div class="url">entelaka.com</div><div class="title">Entelaka</div><div class="meta">Business Platform</div><a href="https://entelaka.com/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">cintero.org</div><div class="url">cintero.org</div><div class="title">Cintero</div><div class="meta">Organization Website</div><a href="https://cintero.org/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">gaetech.ca</div><div class="url">gaetech.ca</div><div class="title">GAE Tech</div><div class="meta">Technology Company</div><a href="https://gaetech.ca/" target="_blank">Open site</a></div>
+    <div class="card"><div class="thumb">uptime-i.com</div><div class="url">uptime-i.com</div><div class="title">Uptime-I</div><div class="meta">Monitoring Platform</div><a href="https://uptime-i.com/" target="_blank">Open site</a></div>
+  </div>
 </section>
 
 <footer>© 2025 Seif AbdeHaleem — Founder, CraftPress</footer>
