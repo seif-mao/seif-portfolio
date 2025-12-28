@@ -1,99 +1,310 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CraftPress — Digital Experiences</title>
+  <meta charset="utf-8">
+  <title>CraftPress — Digital Experiences That Grow Businesses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="icon" href="craftpress-icon.png">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-body{margin:0;font-family:Manrope;background:#fff;color:#0b0b0b}
-.wrap{max-width:1200px;margin:auto;padding:32px}
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="craftpress-icon.png">
 
-header{display:flex;justify-content:space-between;align-items:center}
-header img{height:34px}
-nav a{margin-left:24px;text-decoration:none;font-weight:700;color:#000}
-nav a:hover{color:#2B8CFF}
+  <style>
+    :root{
+      --accent:#2563eb;
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --card:#ffffff;
+      --radius:14px;
+      --maxw:1180px;
+      font-family:'Manrope',system-ui;
+    }
 
-.hero{margin:80px 0 40px}
-.hero h1{font-size:56px;margin:0}
-.hero p{max-width:640px;color:#666;font-size:18px}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text)}
 
-.btns a{display:inline-block;margin-top:20px;margin-right:12px;padding:12px 22px;border-radius:999px;border:1px solid #ddd;font-weight:800;text-decoration:none;color:#000}
-.primary{background:rgba(43,140,255,.1);border-color:#2B8CFF}
+    a{text-decoration:none;color:inherit}
 
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin:80px 0 30px}
-.section-head span{color:#777}
-.section-head h2{margin:0;font-size:34px}
-.section-head a{color:#2B8CFF;font-weight:800;text-decoration:none}
+    /* Header */
+    header{
+      max-width:var(--maxw);
+      margin:28px auto;
+      padding:0 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
-.card{border:1px solid #eee;border-radius:16px;overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(0,0,0,.1)}
-.card img{width:100%;display:block}
-.card .info{padding:18px}
-.card h4{margin:0}
-.card a{color:#2B8CFF;font-weight:800;text-decoration:none}
+    .logo img{height:34px}
 
-.cta{margin:100px 0;padding:42px;border-radius:24px;background:linear-gradient(135deg,#0d1b2a,#1b263b);color:#fff;display:flex;justify-content:space-between;align-items:center}
-.cta p{font-size:24px;max-width:720px;margin:0}
-.cta a{background:#fff;color:#000;padding:14px 26px;border-radius:999px;font-weight:800;text-decoration:none}
+    nav a{
+      margin-left:22px;
+      font-weight:700;
+      color:var(--muted);
+    }
+    nav a:hover{color:var(--accent)}
 
-footer{text-align:center;color:#888;font-size:13px;margin:40px 0}
-@media(max-width:900px){.cta{flex-direction:column;align-items:flex-start}}
-</style>
+    /* Hero */
+    .hero{
+      max-width:var(--maxw);
+      margin:80px auto 40px;
+      padding:0 24px;
+    }
+
+    h1{
+      font-size:56px;
+      line-height:1.05;
+      margin:0 0 16px;
+      font-weight:800;
+    }
+
+    .hero p{
+      max-width:640px;
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .hero-actions{
+      margin-top:26px;
+      display:flex;
+      gap:14px;
+    }
+
+    .btn{
+      padding:12px 22px;
+      border-radius:999px;
+      font-weight:700;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+
+    .btn.primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .btn.ghost{
+      background:#f1f5f9;
+      color:var(--text);
+    }
+
+    /* Section */
+    section{
+      max-width:var(--maxw);
+      margin:90px auto;
+      padding:0 24px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      margin-bottom:34px;
+    }
+
+    .section-head small{
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .section-head h2{
+      margin:6px 0 0;
+      font-size:32px;
+      font-weight:800;
+    }
+
+    .section-head a{
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    /* Projects */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:22px;
+    }
+
+    .project{
+      background:var(--card);
+      border-radius:var(--radius);
+      border:1px solid #e5e7eb;
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .project:hover{
+      transform:translateY(-6px);
+      box-shadow:0 30px 60px rgba(0,0,0,.08);
+    }
+
+    .project img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .project-body{
+      padding:18px;
+    }
+
+    .project h3{
+      margin:0 0 6px;
+      font-size:18px;
+      font-weight:800;
+    }
+
+    .project a{
+      color:var(--accent);
+      font-weight:700;
+      font-size:14px;
+    }
+
+    /* CTA */
+    .cta{
+      background:linear-gradient(135deg,#020617,#020617 60%,#0f172a);
+      color:#fff;
+      border-radius:20px;
+      padding:48px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .cta h3{
+      font-size:30px;
+      margin:0;
+      max-width:620px;
+      line-height:1.3;
+    }
+
+    .cta a{
+      background:#fff;
+      color:#020617;
+      padding:14px 26px;
+      border-radius:999px;
+      font-weight:800;
+    }
+
+    footer{
+      text-align:center;
+      padding:40px 24px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    @media(max-width:900px){
+      h1{font-size:40px}
+      .cta{flex-direction:column;align-items:flex-start}
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrap">
 
 <header>
-  <img src="craftpress-logo.png" alt="CraftPress">
+  <a class="logo" href="index.html">
+    <img src="craftpress-logo.png" alt="CraftPress">
+  </a>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="portfolio.html">Portfolio</a>
-    <a href="mailto:seiffayed08@gmail.com">Contact</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero">
+<div class="hero">
   <h1>We build digital experiences that grow businesses.</h1>
   <p>
     At CraftPress, we build purposeful digital experiences designed to grow real businesses —
     combining strategic branding, UX-driven design, and high-performance WordPress development.
   </p>
-  <div class="btns">
-    <a href="portfolio.html" class="primary">View Portfolio</a>
-    <a href="https://wa.me/201503881330">WhatsApp</a>
+
+  <div class="hero-actions">
+    <a class="btn primary" href="portfolio.html">View Portfolio</a>
+    <a class="btn ghost" href="https://wa.me/201503881330">WhatsApp</a>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <div>
+      <small>A Snapshot of Our Recent</small>
+      <h2>Recent Works</h2>
+    </div>
+    <a href="portfolio.html">View Portfolio →</a>
+  </div>
+
+  <div class="projects">
+    <div class="project">
+      <img src="gmetrics.jpg" alt="GMetrics">
+      <div class="project-body">
+        <h3>GMetrics</h3>
+        <a href="https://gmetrics.com" target="_blank">Open site →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="zomor.jpg" alt="Zomor">
+      <div class="project-body">
+        <h3>Zomor</h3>
+        <a href="https://zomor.com" target="_blank">Open site →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="emmrcem.jpg" alt="EMMRCEM">
+      <div class="project-body">
+        <h3>EMMRCEM</h3>
+        <a href="https://emmrcem.com" target="_blank">Open site →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="takmil.jpg" alt="Takmil">
+      <div class="project-body">
+        <h3>Takmil</h3>
+        <a href="https://takmil.sa" target="_blank">Open site →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="fosolalkhair.jpg" alt="Fosol Al Khair">
+      <div class="project-body">
+        <h3>Fosol Al Khair</h3>
+        <a href="https://fosolalkhair.com" target="_blank">Open site →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="drmahmoudhani.jpg" alt="Dr Mahmoud Hani">
+      <div class="project-body">
+        <h3>Dr Mahmoud Hani</h3>
+        <a href="https://drmahmoudhani.com" target="_blank">Open site →</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="section-head">
-  <div>
-    <span>A Snapshot of Our Recent</span>
-    <h2>Recent Works</h2>
+<section>
+  <div class="cta">
+    <h3>
+      We design bold brands and smart digital solutions that scale with your business.
+    </h3>
+    <a href="mailto:seiffayed08@gmail.com">Get in touch →</a>
   </div>
-  <a href="portfolio.html">View Portfolio →</a>
-</div>
-
-<section class="grid">
-  <div class="card"><img src="assets/images/projects/gmetrics.jpg"><div class="info"><h4>GMetrics</h4><a href="https://gmetrics.com/">Open site →</a></div></div>
-  <div class="card"><img src="assets/images/projects/zomor.jpg"><div class="info"><h4>Zomor</h4><a href="https://zomor.com/">Open site →</a></div></div>
-  <div class="card"><img src="assets/images/projects/emmrcem.jpg"><div class="info"><h4>EMMRCEM</h4><a href="https://emmrcem.com/">Open site →</a></div></div>
-  <div class="card"><img src="assets/images/projects/takmil.jpg"><div class="info"><h4>Takmil</h4><a href="https://takmil.sa/">Open site →</a></div></div>
-  <div class="card"><img src="assets/images/projects/fosolalkhair.jpg"><div class="info"><h4>Fosol Al Khair</h4><a href="https://fosolalkhair.com/">Open site →</a></div></div>
-  <div class="card"><img src="assets/images/projects/drmahmoudhani.jpg"><div class="info"><h4>Dr Mahmoud Hani</h4><a href="https://drmahmoudhani.com/">Open site →</a></div></div>
 </section>
 
-<section class="cta">
-  <p>We design bold brands and smart digital solutions that scale with your business.</p>
-  <a href="mailto:seiffayed08@gmail.com">Get in touch →</a>
-</section>
+<footer>
+  © 2025 Seif AbdeHaleem — CraftPress
+</footer>
 
-<footer>© 2025 Seif AbdeHaleem — CraftPress</footer>
-
-</div>
 </body>
 </html>
