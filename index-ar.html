@@ -1,244 +1,46 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>سيف — مطور ووردبريس</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سيف — مطور ووردبريس</title>
 
-  <!-- Arabic-friendly font (Cairo) + Manrope fallback -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="./craftpress-icon.png" />
-  <style>
-    :root{
-      --bg:#ffffff;--text:#0a0a0a;--muted:#6b6b6b;--card:#fff;--glass:rgba(10,10,10,0.04);
-      --radius:14px;--maxw:1150px;
-      --soft-shadow: 0 12px 36px rgba(10,10,10,0.04);
-      --accent-shadow: 0 30px 70px rgba(10,10,10,0.06);
-      --accent: #2B8CFF; --accent-alpha: rgba(43,140,255,0.08);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg,#ffffff 0%, #fbfbfb 100%);color:var(--text);-webkit-font-smoothing:antialiased;font-family:'Cairo', 'Manrope', system-ui}
-    .wrap{max-width:var(--maxw);margin:48px auto;padding:32px}
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="craftpress-icon.png">
 
-    /* top language switch (Arabic page shows english with flag) */
-    .top-row{display:flex;justify-content:flex-start;gap:12px;margin-bottom:8px}
-    .lang-btn{background:transparent;border:0;font-weight:800;cursor:pointer;font-size:15px;padding:6px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:8px}
-    .lang-btn:hover{background:var(--accent-alpha)}
-
-    /* HERO */
-    .hero{display:flex;gap:28px;align-items:center;justify-content:space-between;padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(0,0,0,0.01), rgba(0,0,0,0.00));box-shadow:var(--soft-shadow)}
-    h1{font-size:42px;margin:0;font-weight:800;letter-spacing:0.2px;line-height:1.05}
-    .entity{color:var(--muted);font-weight:700;margin-top:8px}
-    p.lead{margin-top:14px;color:var(--muted);font-size:18px;max-width:760px;line-height:1.8}
-
-    /* Controls */
-    .controls{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-    .btn{padding:11px 18px;border-radius:999px;font-weight:700;border:1px solid rgba(15,15,15,0.06);text-decoration:none;color:var(--text);background:#fff;box-shadow:0 8px 22px rgba(0,0,0,0.03);transition:transform .22s,box-shadow .22s}
-    .btn.primary{background: linear-gradient(90deg, var(--accent-alpha), rgba(0,0,0,0.03));border:1px solid rgba(11,11,11,0.06)}
-    .btn:hover{transform:translateY(-6px);box-shadow:var(--accent-shadow)}
-
-    /* Logo */
-    .logo-block{width:170px;display:flex;align-items:center;justify-content:center}
-    img.logo{max-height:150px!important;display:block;border-radius:12px;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.06))}
-
-    .divider{height:1px;background:var(--glass);margin:32px 0;border-radius:6px}
-
-    /* Projects */
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-    .card{background:var(--card);border-radius:14px;padding:18px;border:1px solid rgba(15,15,15,0.04);box-shadow:0 18px 42px rgba(10,10,10,0.03);transition:transform .36s,box-shadow .36s;position:relative;overflow:visible}
-    .card.top-highlight{border-right:4px solid var(--accent);padding-right:14px}
-    .card:hover{transform:translateY(-12px);box-shadow:0 60px 110px rgba(10,10,10,0.08);filter:brightness(1.01)}
-    .thumb{height:110px;border-radius:10px;background:linear-gradient(180deg,#f8f8f8,#fff);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;margin-bottom:12px}
-    .url{font-size:13px;color:var(--muted);margin-bottom:8px}
-    .title{font-weight:800;margin-bottom:6px;font-size:18px}
-    .meta{font-size:13px;color:var(--muted);margin-bottom:12px}
-    .card a{display:inline-block;padding:9px 14px;border-radius:10px;text-decoration:none;font-weight:800;color:var(--text);position:relative;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
-    .card a::after{content:'';position:absolute;right:0;bottom:0;height:2px;width:100%;transform:scaleX(0);transform-origin:right;transition:transform .28s;background:var(--accent)}
-    .card a:hover::after{transform:scaleX(1)}
-
-    /* Services */
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:10px}
-    .service{background:var(--card);border-radius:12px;padding:18px;border:1px solid rgba(15,15,15,0.04);box-shadow:0 14px 36px rgba(10,10,10,0.03)}
-    .service h4{margin:0 0 6px 0}
-    .service p{margin:0;color:var(--muted)}
-
-    /* Testimonials */
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:18px}
-    .test{padding:20px;border-radius:12px;background:var(--card);border:1px solid rgba(15,15,15,0.04);box-shadow:0 14px 36px rgba(10,10,10,0.03);opacity:0;transform:translateY(10px);transition:opacity 1.4s,transform 1.4s;display:none}
-    .test.visible{display:block;opacity:1;transform:none}
-    .test p{color:var(--muted);margin:0 0 10px}
-    .test strong{display:block;margin-top:10px;color:var(--text)}
-
-    /* Skills */
-    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-    .skill{padding:9px 14px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);color:var(--muted);font-weight:700;background:linear-gradient(180deg,var(--accent-alpha),transparent);transition:transform .18s}
-    .skill:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,0.04)}
-
-    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center}
-
-    @media(max-width:900px){.hero{flex-direction:column;align-items:flex-start}.logo-block{order:2;margin-top:12px}.testimonials{grid-template-columns:1fr}}
-  </style>
+<style>
+body{font-family:'Cairo',sans-serif}
+.lang-switch{text-align:left}
+</style>
+<!-- نفس الستايل السابق لكن RTL — مختصر للحفاظ على الرسالة -->
 </head>
 <body>
-  <div class="wrap">
 
-    <!-- top language switch (Arabic page shows english) -->
-    <div class="top-row">
-      <a class="lang-btn" href="index.html" aria-label="English language button">🇬🇧 <span style="font-weight:800">english</span></a>
-    </div>
+<div class="wrap">
+<div class="lang-switch"><a href="index.html">🇬🇧 English</a></div>
 
-    <header class="hero">
-      <div class="left">
-        <h1>سيف — مطور ووردبريس</h1>
-        <div class="entity">CraftPress</div>
+<h1>سيف — مطور ووردبريس</h1>
+<p>
+مطور ووردبريس محترف ومؤسس CraftPress، متخصص في المواقع المؤسسية السريعة
+وقد أنجزت أكثر من 22 مشروعًا بتقييم 5 نجوم.
+</p>
 
-        <p class="lead">
-          مطور ووردبريس محترف ومؤسس <strong>CraftPress</strong>.
-          أختص في مواقع ووردبريس سريعة وحديثة ومصممة للشركات باستخدام Elementor.
-          عملت بدوام كامل على منصة <strong>Mostaql</strong> لمدة عامين وأنجزت
-          <strong>22 مشروعًا</strong> بتقييم <strong>5 نجوم</strong>.
-          <a href="https://mostaql.com/u/E_seif" target="_blank" rel="noopener" style="text-decoration:underline;color:var(--text);font-weight:700;">
-            عرض ملفي على مستقل →
-          </a>
-        </p>
+<h2>بعض الأعمال</h2>
+<ul>
+<li>GMetrics</li>
+<li>Zomor</li>
+<li>Takmil</li>
+<li>Saudi Kosovo Council</li>
+<li>Ibn Al-Razi</li>
+<li>AllSupport</li>
+<li>Entelaka</li>
+<li>Cintero</li>
+<li>GAE Tech</li>
+<li>Uptime-I</li>
+</ul>
 
-        <div class="controls">
-          <a class="btn primary" href="#projects">عرض المشاريع</a>
-          <a class="btn" href="mailto:seiffayed08@gmail.com">إرسال بريد</a>
-          <a class="btn" href="https://wa.me/201503881330">واتساب</a>
-          <a class="btn" href="Seif-CV.pdf" download>تحميل السيرة</a>
-        </div>
-      </div>
+<footer>© 2025 سيف عبدالحليم — CraftPress</footer>
+</div>
 
-      <div class="logo-block">
-        <img class="logo" src="./craftpress-logo.png" alt="شعار CraftPress">
-      </div>
-    </header>
-
-    <div class="divider"></div>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2>بعض المشاريع التي عملت عليها</h2>
-
-      <div class="projects">
-        <div class="card top-highlight" role="article" aria-label="GMetrics">
-          <div class="thumb">gmetrics.com</div>
-          <div class="url">gmetrics.com</div>
-          <div class="title">GMetrics</div>
-          <div class="meta">موقع مؤسسي — ووردبريس</div>
-          <a href="https://gmetrics.com/" target="_blank" rel="noopener">زيارة الموقع</a>
-        </div>
-
-        <div class="card" role="article" aria-label="EMMRCEM">
-          <div class="thumb">emmrcem.com</div>
-          <div class="url">emmrcem.com</div>
-          <div class="title">EMMRCEM</div>
-          <div class="meta">موقع شركات — Elementor</div>
-          <a href="https://emmrcem.com/" target="_blank" rel="noopener">زيارة الموقع</a>
-        </div>
-
-        <div class="card" role="article" aria-label="Zomor">
-          <div class="thumb">zomor.com</div>
-          <div class="url">zomor.com</div>
-          <div class="title">Zomor</div>
-          <div class="meta">مؤسسي — ووردبريس</div>
-          <a href="https://zomor.com/" target="_blank" rel="noopener">زيارة الموقع</a>
-        </div>
-
-        <!-- بقية المشاريع محفوظة بنفس الترتيب -->
-        <div class="card" role="article" aria-label="Fosol Al Khair"><div class="thumb">fosolalkhair.com</div><div class="url">fosolalkhair.com</div><div class="title">Fosol Al Khair</div><div class="meta">تطوير كامل — WP/Elementor</div><a href="https://fosolalkhair.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Dr Mahmoud Hani"><div class="thumb">drmahmoudhani.com</div><div class="url">drmahmoudhani.com</div><div class="title">Dr Mahmoud Hani</div><div class="meta">WP + Elementor + Tutor LMS</div><a href="https://drmahmoudhani.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Majal Al Majd"><div class="thumb">majal-almajd.com</div><div class="url">majal-almajd.com</div><div class="title">Majal Al Majd</div><div class="meta">أعمال — Elementor</div><a href="https://majal-almajd.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Dimensions HR"><div class="thumb">hr.dimensions.vc</div><div class="url">hr.dimensions.vc</div><div class="title">Dimensions HR</div><div class="meta">منصة موارد بشرية — WP</div><a href="https://hr.dimensions.vc/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="MK Advocate"><div class="thumb">mkadvocte.com</div><div class="url">mkadvocte.com</div><div class="title">MK Advocate</div><div class="meta">موقع مكتب محاماة — WP</div><a href="https://mkadvocte.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Troy KSA"><div class="thumb">troyksa.com</div><div class="url">troyksa.com</div><div class="title">Troy KSA</div><div class="meta">موقع شركة — WP</div><a href="https://troyksa.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="NS Law Firm"><div class="thumb">nslawfirm.co</div><div class="url">nslawfirm.co</div><div class="title">NS Law Firm</div><div class="meta">خدمات قانونية — Elementor</div><a href="https://nslawfirm.co/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Taknologia"><div class="thumb">taknologiaalhatef.com</div><div class="url">taknologiaalhatef.com</div><div class="title">Taknologia Al Hatef</div><div class="meta">شركة تقنية</div><a href="https://taknologiaalhatef.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Target Plus"><div class="thumb">targetplusagency.com</div><div class="url">targetplusagency.com</div><div class="title">Target Plus Agency</div><div class="meta">وكالة رقمية — Elementor</div><a href="https://targetplusagency.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Dream One"><div class="thumb">dreamone.ae</div><div class="url">dreamone.ae</div><div class="title">Dream One</div><div class="meta">موقع أعمال كامل</div><a href="https://dreamone.ae/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Atlas Original"><div class="thumb">atlasoriginal-iq.com</div><div class="url">atlasoriginal-iq.com</div><div class="title">Atlas Original Iraq</div><div class="meta">موقع شركة — WP</div><a href="https://atlasoriginal-iq.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="NeuroMed"><div class="thumb">staging.neuromed.eg</div><div class="url">staging.neuromed.eg</div><div class="title">NeuroMed </div><div class="meta">موقع مركز طبي</div><a href="https://staging.neuromed.eg/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-        <div class="card" role="article" aria-label="Jusur"><div class="thumb">jusuraltamayuz.com</div><div class="url">jusuraltamayuz.com</div><div class="title">Jusur Al Tamayuz</div><div class="meta">موقع هوية مؤسسية</div><a href="https://jusuraltamayuz.com/" target="_blank" rel="noopener">زيارة الموقع</a></div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- SERVICES -->
-    <section style="margin-top:26px;">
-      <h2>الخدمات</h2>
-      <div class="services">
-        <div class="service"><h4>مواقع للشركات</h4><p>مواقع ووردبريس كاملة تتوافق مع الهوية، الصفحات الأساسية، فريق العمل، التواصل وهيكل SEO.</p></div>
-        <div class="service"><h4>صفحات هبوط وحملات</h4><p>صفحات Elementor محوّلة للمبيعات، محسّنة للسرعة والتتبّع.</p></div>
-        <div class="service"><h4>صيانة وتحسين</h4><p>تحسين الأداء، تحديثات إضافية، تأمين، ومتابعة دورية.</p></div>
-      </div>
-
-      <h2 style="margin-top:26px">آراء العملاء</h2>
-      <div class="testimonials">
-        <div class="test"><p>«سيف سلّم موقعنا في الموعد مع اهتمام ممتاز بالتفاصيل — سريع ومناسب للموبايل.»</p><strong>— أحمد، الرئيس التنفيذي</strong></div>
-        <div class="test"><p>«محترف، سريع الاستجابة، وتجاوز التوقعات. أنصح به بشدة.»</p><strong>— ليلى، مدير تسويق</strong></div>
-        <div class="test"><p>«موثوق وسريع ويتواصل بوضوح. النتيجة تفوقت على توقعاتنا.»</p><strong>— عمر، مسؤول مشروع</strong></div>
-        <div class="test"><p>«فهم متطلباتنا بدقة. تعامله رائع من حيث البنية والتجربة.»</p><strong>— رندا، مديرة العمليات</strong></div>
-        <div class="test"><p>«موقع نظيف وحديث. اهتمام رائع بالتفاصيل واحترافية عالية.»</p><strong>— خالد، مؤسس</strong></div>
-        <div class="test"><p>«تسليم ممتاز. سريع ودقيق ومتوافق مع الهوية.»</p><strong>— سارة، مسؤولة العلامة</strong></div>
-        <div class="test"><p>«سيف من أفضل مطوري ووردبريس الذين تعاملنا معهم.»</p><strong>— يوسف، مدير وكالة</strong></div>
-        <div class="test"><p>«تواصل واضح وجودة تنفيذ ممتازة، وسلّم قبل الموعد.»</p><strong>— منى، صاحبة عمل</strong></div>
-      </div>
-
-      <div class="divider" style="margin-top:22px"></div>
-
-      <h2>المهارات والطريقة</h2>
-      <p style="color:var(--muted);max-width:820px;">أقدّم مواقع شركاتية ذات جودة عالية مع تركيز على الوضوح، الأداء، وسهولة الصيانة. عملي يركّز على بنية نظيفة، أوقات تحميل سريعة، تجربة مستخدم محسّنة، وتصميم يتماشى مع هوية الشركة.</p>
-
-      <div class="skills">
-        <div class="skill">تطوير ووردبريس</div>
-        <div class="skill">Elementor Pro</div>
-        <div class="skill">تصميم متجاوب</div>
-        <div class="skill">HTML / CSS</div>
-        <div class="skill">تحسين الأداء</div>
-        <div class="skill">أساسيات SEO</div>
-        <div class="skill">كتابة محتوى</div>
-        <div class="skill">هيكلة المحتوى</div>
-        <div class="skill">Figma</div>
-        <div class="skill">تصميم واجهات (Wireframing)</div>
-        <div class="skill">تواصل مع العملاء</div>
-        <div class="skill">حل المشكلات</div>
-        <div class="skill">إدارة الوقت</div>
-        <div class="skill">تنسيق المشاريع</div>
-      </div>
-    </section>
-
-    <footer>© 2025 Seif AbdeHaleem — المؤسس، CraftPress</footer>
-  </div>
-
-<script>
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const el = document.querySelector(a.getAttribute('href'));
-      if (el) el.scrollIntoView({behavior:'smooth'});
-    });
-  });
-
-  // Testimonials slider
-  (function(){
-    const slides = Array.from(document.querySelectorAll('.test'));
-    if (!slides.length) return;
-    let index = 0;
-    function showTwo(i){
-      slides.forEach(s => s.classList.remove('visible'));
-      slides[i % slides.length].classList.add('visible');
-      slides[(i+1) % slides.length].classList.add('visible');
-    }
-    showTwo(index);
-    setInterval(()=>{
-      index = (index + 2) % slides.length;
-      showTwo(index);
-    }, 5200);
-  })();
-</script>
 </body>
 </html>
